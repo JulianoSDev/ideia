@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra mais sobre nós</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+            margin-bottom: 20px;
+        }
+        .question {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: none; /* As perguntas começam ocultas */
+        }
+        .question:hover {
+            background-color: #e0f7fa;
+        }
+        .response {
+            margin-top: 10px;
+            color: #0077cc;
+            font-weight: bold;
+            display: none;
+        }
+        .show-response {
+            display: block;
+        }
+        button {
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #005f99;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        .next-btn {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>O que eu mais gosto em você?</h1>
+        
+        <div class="question" id="question1" onclick="toggleResponse(1)">
+            Cabelo?
+            <div id="response1" class="response">SEU CABELO É MT LINDO VSFD 😄</div>
+            <button id="nextBtn1" class="next-btn" onclick="nextQuestion(2)">Próxima pergunta</button>
+        </div>
+
+        <div class="question" id="question2" onclick="toggleResponse(2)">
+            Sua forma maluca de lidar com as coisas?
+            <div id="response2" class="response">Sim, você é bem maluca não ironicamente 🌸</div>
+            <button id="nextBtn2" class="next-btn" onclick="nextQuestion(3)">Próxima pergunta</button>
+        </div>
+
+        <div class="question" id="question3" onclick="toggleResponse(3)">
+            De você ser minha primeira amiga da vida?
+            <div id="response3" class="response">Véi, a gente se conhece desde o berço. 😊</div>
+            <button id="nextBtn3" class="next-btn" onclick="nextQuestion(4)">Próxima pergunta</button>
+        </div>
+
+        <div class="question" id="question4" onclick="toggleResponse(4)">
+            Já falei maluca?
+            <div id="response4" class="response">VOCE É BEM MALUCA OK? 🌍</div>
+            <button id="nextBtn4" class="next-btn" onclick="showAppreciation()">Fim</button>
+        </div>
+
+        <footer>
+            Feito com carinho. 🌷
+        </footer>
+    </div>
+
+    <script>
+        let currentQuestion = 1; // Variável para controlar a pergunta atual
+
+        // Função para exibir as respostas
+        function toggleResponse(num) {
+            const response = document.getElementById(`response${num}`);
+            response.classList.add('show-response');
+            document.getElementById(`nextBtn${num}`).style.display = 'inline-block'; // Exibe o botão "Próxima pergunta"
+        }
+
+        // Função para exibir a próxima pergunta
+        function nextQuestion(num) {
+            // Esconde a pergunta atual
+            document.getElementById(`question${currentQuestion}`).style.display = 'none';
+            
+            // Exibe a próxima pergunta
+            document.getElementById(`question${num}`).style.display = 'block';
+            currentQuestion = num; // Atualiza a pergunta atual
+        }
+
+        // Exibe a primeira pergunta ao carregar a página
+        window.onload = function() {
+            document.getElementById('question1').style.display = 'block';
+        }
+
+        function showAppreciation() {
+            alert("I love U");
+        }
+    </script>
+</body>
+</html>
